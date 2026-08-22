@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">PrizePilot Agent architecture</title>
+  <desc id="desc">Browser sends an opportunity and projects to Cloud Run. Cloud Tasks invokes a worker, Gemini creates an evidence-bound pack, Firestore stores state, and a human approves the result.</desc>
+  <rect width="1200" height="675" fill="#07110d"/>
+  <text x="70" y="85" fill="#edf8f1" font-family="Arial" font-size="42" font-weight="700">PrizePilot autonomous workflow</text>
+  <text x="70" y="125" fill="#92a89a" font-family="Arial" font-size="20">Asynchronous generation, durable evidence, explicit human approval</text>
+  <g font-family="Arial" font-size="20" text-anchor="middle">
+    <g><rect x="55" y="250" width="190" height="110" rx="20" fill="#11251a" stroke="#78e6a7"/><text x="150" y="295" fill="#edf8f1">Web UI</text><text x="150" y="326" fill="#92a89a" font-size="16">opportunity + projects</text></g>
+    <g><rect x="300" y="250" width="190" height="110" rx="20" fill="#11251a" stroke="#78e6a7"/><text x="395" y="295" fill="#edf8f1">Cloud Run API</text><text x="395" y="326" fill="#92a89a" font-size="16">202 + run ID</text></g>
+    <g><rect x="545" y="250" width="190" height="110" rx="20" fill="#11251a" stroke="#78e6a7"/><text x="640" y="295" fill="#edf8f1">Cloud Tasks</text><text x="640" y="326" fill="#92a89a" font-size="16">durable async queue</text></g>
+    <g><rect x="790" y="250" width="190" height="110" rx="20" fill="#11251a" stroke="#78e6a7"/><text x="885" y="295" fill="#edf8f1">Gemini 3.5</text><text x="885" y="326" fill="#92a89a" font-size="16">structured application pack</text></g>
+    <g><rect x="545" y="455" width="190" height="110" rx="20" fill="#11251a" stroke="#78e6a7"/><text x="640" y="500" fill="#edf8f1">Firestore</text><text x="640" y="531" fill="#92a89a" font-size="16">state + evidence</text></g>
+    <g><rect x="300" y="455" width="190" height="110" rx="20" fill="#183323" stroke="#78e6a7"/><text x="395" y="500" fill="#edf8f1">Human gate</text><text x="395" y="531" fill="#92a89a" font-size="16">approve only if complete</text></g>
+  </g>
+  <g stroke="#78e6a7" stroke-width="3" fill="none"><path d="M245 305H300"/><path d="M490 305H545"/><path d="M735 305H790"/><path d="M885 360V410H640V455"/><path d="M545 510H490"/><path d="M395 455V405H150V360"/></g>
+</svg>
+
