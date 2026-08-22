@@ -1,0 +1,24 @@
+{
+  "opportunity": {
+    "id": "all-things-agentic-2026",
+    "title": "All Things Agentic Hackathon",
+    "sponsor": "Google",
+    "deadline": "2026-08-31T17:00:00-07:00",
+    "prize": "$180,000 total",
+    "requirements": ["Gemini 3.5+", "Google GenAI SDK", "Google Cloud infrastructure", "new project"],
+    "judgingCriteria": ["innovation", "technical implementation", "impact", "demo quality"],
+    "sourceUrl": "https://allthingsagentichackathon.devpost.com/rules"
+  },
+  "projects": [
+    {
+      "id": "greenroute",
+      "name": "GreenRoute AI",
+      "summary": "Explains route impact and sustainability trade-offs with auditable evidence.",
+      "capabilities": ["route comparison", "evidence display", "human-readable impact summaries"],
+      "evidence": ["Published prototype exists", "Public source repository exists"],
+      "constraints": ["No Google Cloud deployment has been evidenced in this sample"],
+      "links": ["https://whisper-ai-route.lovable.app", "https://github.com/SnitterDK/greenroute-audit-lab"]
+    }
+  ]
+}
+
