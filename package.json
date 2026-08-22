@@ -1,0 +1,27 @@
+{
+  "name": "prizepilot-autonomous-application-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "demo": "LOCAL_DEMO=1 tsx src/demo.ts"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "^7.11.5",
+    "@google-cloud/tasks": "^6.2.1",
+    "@google/genai": "^1.20.0",
+    "express": "^5.1.0",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
