@@ -64,14 +64,14 @@ const fixturePack = {
   eligibility: "needs_review",
   elevatorPitch: "A truthful application draft with every unsupported claim exposed before approval.",
   eligibilityReasons: [
-    li("The project aligns with agentic productivity workflows."),
-    li("Contest-period implementation is disclosed separately from the earlier tracker concept."),
+    "The project aligns with agentic productivity workflows.",
+    "Contest-period implementation is disclosed separately from the earlier tracker concept.",
   ],
   missingEvidence: [
-    li("Live Vertex AI, Cloud Tasks and Firestore deployment evidence."),
-    li("Public demo video showing the Google Cloud backend."),
+    "Live Vertex AI, Cloud Tasks and Firestore deployment evidence.",
+    "Public demo video showing the Google Cloud backend.",
   ],
   requiredHumanActions: [
-    li("Review eligibility and accept the official rules before submission."),
+    "Review eligibility and accept the official rules before submission.",
   ],
 };
