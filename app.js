@@ -3,14 +3,28 @@ const result = document.querySelector("#result");
 const mode = document.querySelector("#mode");
 const steps = [...document.querySelectorAll(".step")];
 
-const health = await fetch("/healthz").then(r => r.json());
-mode.textContent = health.mode === "vertex-ai" ? "Vertex AI + Cloud Tasks + Firestore" : "Safe fixture mode — no external action";
+const apiBase = location.hostname.endsWith("github.io") ? null : "";
+const health = apiBase === null
+  ? { mode: "static-fixture" }
+  : await fetch("/healthz").then(r => r.json()).catch(() => ({ mode: "static-fixture" }));
+mode.textContent = health.mode === "vertex-ai"
+  ? "Vertex AI + Cloud Tasks + Firestore"
+  : "Safe fixture mode — no external action";
 
 runButton.addEventListener("click", async () => {
   runButton.disabled = true;
   setStep(1);
   result.className = "result";
   result.innerHTML = "<h2>Application pack</h2><p>Queued…</p>";
+  if (apiBase === null || health.mode === "static-fixture") {
+    await new Promise(resolve => setTimeout(resolve, 450));
+    setStep(2);
+    await new Promise(resolve => setTimeout(resolve, 450));
+    setStep(3);
+    render({ status: "review_required", pack: fixturePack });
+    runButton.disabled = false;
+    return;
+  }
   const sample = await fetch("/sample.json").then(r => r.json());
   const created = await fetch("/api/runs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(sample) }).then(r => r.json());
   setStep(2);
@@ -45,3 +59,19 @@ function render(run) {
 function li(value) { return `<li>${escapeHtml(value)}</li>`; }
 function escapeHtml(value) { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"})[c]); }
 
+const fixturePack = {
+  fitScore: 72,
+  eligibility: "needs_review",
+  elevatorPitch: "A truthful application draft with every unsupported claim exposed before approval.",
+  eligibilityReasons: [
+    li("The project aligns with agentic productivity workflows."),
+    li("Contest-period implementation is disclosed separately from the earlier tracker concept."),
+  ],
+  missingEvidence: [
+    li("Live Vertex AI, Cloud Tasks and Firestore deployment evidence."),
+    li("Public demo video showing the Google Cloud backend."),
+  ],
+  requiredHumanActions: [
+    li("Review eligibility and accept the official rules before submission."),
+  ],
+};
